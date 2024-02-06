@@ -266,7 +266,7 @@ class CustomNonPaddingTokenLoss(keras.losses.Loss):
 
     def call(self, y_true, y_pred):
         loss_fn = keras.losses.SparseCategoricalCrossentropy(
-            from_logits=False, reduction=None
+            from_logits=False, reduction='none'
         )
         loss = loss_fn(y_true, y_pred)
         mask = tf.cast((y_true > 0), dtype=tf.float32)
